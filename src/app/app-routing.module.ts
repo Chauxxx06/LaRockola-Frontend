@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'sing-up', component:SingUpComponent},
   {path: 'list-songs',  loadChildren: () => import('./list-songs/list-songs.module').then(m => m.ListSongsModule)},
   {path: 'artist',  loadChildren: () => import('./artists/artists.module').then(m => m.ArtistsModule)},
-  {path: 'songs',  loadChildren: () => import('./songs/songs.module').then(m => m.SongsModule)}
+  {path: 'songs',  loadChildren: () => import('./songs/songs.module').then(m => m.SongsModule)},
+  {path: 'category',  loadChildren: () => import('./categories-songs/categories-songs.module').then(m => m.CategoriesSongsModule)}
 ];
 
 @NgModule({
