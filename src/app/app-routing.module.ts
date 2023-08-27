@@ -6,9 +6,9 @@ import { SingUpComponent } from './view/sing-up/sing-up.component';
 import { HomeComponent } from './view/home/home.component';
 
 const routes: Routes = [
-  {path: 'home/:id', component:HomeComponent},
+  {path: 'home', component:HomeComponent},
   {path: 'login', component:LoginComponent},
-  {path: '', redirectTo: 'login', pathMatch:'full'},
+  {path: '', redirectTo: 'home', pathMatch:'full'},
   {path: 'sing-up', component:SingUpComponent},
   {path: 'list-songs',  loadChildren: () => import('./list-songs/list-songs.module').then(m => m.ListSongsModule)},
   {path: 'artist',  loadChildren: () => import('./artists/artists.module').then(m => m.ArtistsModule)},
