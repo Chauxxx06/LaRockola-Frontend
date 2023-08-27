@@ -11,14 +11,6 @@ import { ArtistService } from 'src/app/services/artist.service';
 })
 export class CreateArtistComponent {
 
-  // formNew = new FormGroup<any>({
-  //   idArtista: new FormControl('', Validators.required),
-  //   nombreArtista: new FormControl('', Validators.required),
-  //   generoArtista: new FormControl('', Validators.required),
-  //   descripcionArtista: new FormControl('', Validators.required),
-  //   fechaRegistro: new FormControl('', Validators.required)
-  // })
-
   constructor(
     private artistService: ArtistService,
     private router:Router,

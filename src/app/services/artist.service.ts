@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ArtistService {
 
   url: string = 'http://localhost:9090/artista/';
+  
 
   constructor(private http: HttpClient) { }
 
@@ -22,9 +23,18 @@ export class ArtistService {
     return this.http.post<Artist>(link, form);
   }
 
+  public getArtistById(id:String) {
+    let link = this.url + "search/" + id;
+    return this.http.get<Artist>(link);
+  }
+
   public deleteArtist(id:String): Observable<void> {
     let link = this.url + "delete/" + id;
-    console.log(link);
     return this.http.delete<void>(link);
+  }
+
+  public editArtist(form: Artist) {
+    let link = this.url + "update";
+    return this.http.put<Artist>(link, form);
   }
 }

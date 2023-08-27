@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Artist } from 'src/app/models/artist/Artist.interface';
 import { ArtistService } from 'src/app/services/artist.service';
+import { IdEntitiesService } from 'src/app/services/utils/id-entities.service';
 
 @Component({
   selector: 'app-list-artist',
@@ -10,10 +11,12 @@ import { ArtistService } from 'src/app/services/artist.service';
 })
 export class ListArtistComponent implements OnInit {
   artists : Artist[] = [];
+  idSend: any;
 
   constructor(
     private artistService: ArtistService,
-    private router:Router, 
+    private router:Router,
+    private sendIdComponent: IdEntitiesService,
   ) {}
 
   ngOnInit(): void {
@@ -28,8 +31,14 @@ export class ListArtistComponent implements OnInit {
   }
 
   public deleteArtist(id: String) {
-    console.log(id);
     this.artistService.deleteArtist(id).subscribe();
   }
+
+  public editArtist(id: String) {
+    this.idSend= id;
+    this.sendIdComponent.sendIdComponents(this.idSend);
+    this.router.navigate(['artist/edit'])
+  }
+
 
 }
