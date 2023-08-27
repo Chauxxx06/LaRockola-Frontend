@@ -19,12 +19,17 @@ export class ListArtistComponent implements OnInit {
   ngOnInit(): void {
     this.artistService.getAllArtist().subscribe(data => {
       console.log(data);
-      this.artists = data;
-    })
+      this.artists = data
+    });
   }
 
-  public addUser() {
+  public addArtist() {
     this.router.navigate(['artist/create']);
+  }
+
+  public deleteArtist(id: String) {
+    console.log(id);
+    this.artistService.deleteArtist(id).subscribe();
   }
 
 }

@@ -18,7 +18,13 @@ export class ArtistService {
   }
 
   public addArtist(form:Artist): Observable<Artist> {
-    let link = this.url + "create";
+    let link = this.url + "save";
     return this.http.post<Artist>(link, form);
+  }
+
+  public deleteArtist(id:String): Observable<void> {
+    let link = this.url + "delete/" + id;
+    console.log(link);
+    return this.http.delete<void>(link);
   }
 }

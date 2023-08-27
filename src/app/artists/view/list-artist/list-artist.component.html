@@ -1,5 +1,5 @@
 <div class="container" style="margin-top: 40px;">
-    <button type="button" class="btn btn-primary" style="float: initial; margin-bottom: 10px;" (click)="addUser()">Agregar Usuario</button>
+    <button type="button" class="btn btn-primary" style="float: initial; margin-bottom: 10px;" (click)="addArtist()">Agregar Usuario</button>
 
     <div class="card" style="margin-bottom: 10px;">
 
@@ -13,6 +13,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Genero</th>
                 <th scope="col">Descripcion</th>
+                <th scope="col">Fecha Actualizacion</th>
                 <th></th>
               </tr>
             </thead>
@@ -21,9 +22,10 @@
                 <th>{{artist.nombreArtista}}</th>
                 <td>{{artist.generoArtista}}</td>
                 <td>{{artist.descripcionArtista}}</td>
+                <td>{{artist.fechaRegistro}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary" style="float: left" >Editar</button>
-                    <button type="button" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
+                    <button type="button" class="btn btn-primary" style="float: left">Editar</button>
+                    <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteArtist(artist.idArtista)">Eliminar</button>
                 </td>
               </tr>
             </tbody>
