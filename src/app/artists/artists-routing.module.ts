@@ -6,7 +6,7 @@ import { CreateArtistComponent } from './view/create-artist/create-artist.compon
 
 const routes: Routes = [
   {path:'', component: ListArtistComponent},
-  {path:'edit/:id', component: EditArtistComponent},
+  {path:'edit', component: EditArtistComponent},
   {path:'create', component: CreateArtistComponent},
 ];
 

@@ -1,1 +1,59 @@
-<p>sing-up works!</p>
+<div class="container" style="max-width: 40%; margin-top: 10px;">
+    <form [formGroup]="formNew" (ngSubmit)="postForm(formNew.getRawValue())">
+        <div class="form-group">
+            <label for="FormControlInput2">Tipo Usuario</label>
+            <input type="text" class="form-control" placeholder="Id" formControlName="idTipoUsuario">
+            <div *ngIf="formNew.get('idTipoUsuario')?.invalid && formNew.get('idTipoUsuario')?.dirty" class="alert alert-danger mt-2">
+                el id es obligatorio
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="FormControlInput3">Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombreUsuario">
+            <div *ngIf="formNew.get('nombreUsuario')?.invalid && formNew.get('nombreUsuario')?.dirty" class="alert alert-danger mt-2">
+                el nombre es obligatorio
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="FormControlInput4">Alias o Nickname</label>
+            <input type="text" class="form-control" placeholder="nickname" formControlName="nickname">
+            <div *ngIf="formNew.get('nickname')?.invalid && formNew.get('nickname')?.dirty" class="alert alert-danger mt-2">
+                el nickname obligatorio
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="FormControlInput3">Nombre</label>
+            <input type="email" class="form-control" placeholder="email" formControlName="emailUsuario">
+            <div *ngIf="formNew.get('emailUsuario')?.invalid && formNew.get('emailUsuario')?.dirty" class="alert alert-danger mt-2">
+                el nombre es obligatorio
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="FormControlInput4">Password</label>
+            <input type="password" class="form-control" placeholder="password" formControlName="password">
+            <div *ngIf="formNew.get('password')?.invalid && formNew.get('password')?.dirty" class="alert alert-danger mt-2">
+                el nicknamees obligatorio
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="FormControlInput4">Fecha Registro</label>
+            <input type="text" class="form-control" placeholder="fecha" formControlName="fechaRegistro" [ngModel]="getCurrentDate()"readonly>
+            <div *ngIf="formNew.get('fechaRegistro')?.invalid && formNew.get('fechaRegistro')?.dirty" class="alert alert-danger mt-2">
+                fecha obligatoria
+            </div>
+        </div>
+
+       
+        <br>
+        <button type="submit" class="btn btn-primary" [disabled]="formNew.get('idTipoUsuario')?.invalid || formNew.get('nombreUsuario')?.invalid || formNew.get('password')?.invalid || formNew.get('emailUsuario')?.invalid">Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="return()">Regresar</button>
+
+
+    </form>
+
+</div>

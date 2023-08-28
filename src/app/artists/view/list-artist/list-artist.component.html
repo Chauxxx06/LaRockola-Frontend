@@ -24,7 +24,7 @@
                 <td>{{artist.descripcionArtista}}</td>
                 <td>{{artist.fechaRegistro}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary" style="float: left">Editar</button>
+                    <button type="button" class="btn btn-primary" style="float: left" (click)="editArtist(artist.idArtista)">Editar</button>
                     <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteArtist(artist.idArtista)">Eliminar</button>
                 </td>
               </tr>
