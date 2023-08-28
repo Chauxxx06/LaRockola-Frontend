@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-md-6 offset-md-3">
       <h2 class="text-center">Crear nueva lista de canciones</h2>
-      <form>
+      <form (ngSubmit)="postForm(formNew.getRawValue())">
         <div class="form-group">
           <label for="nombreLista">Nombre de la Lista</label>
           <input type="text" class="form-control" id="nombreLista" name="nombre_lista" required>
@@ -21,4 +21,5 @@
     </div>
   </div>
 </div>
+
 
