@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url('C:\java\angular\rockola_front_end\LaRockola-Frontend\src\assets\Inicio.jpg');
+background-image: url('../../../assets/Inicio.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 height: 850px;

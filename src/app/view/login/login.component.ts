@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  constructor(
+    private router:Router,
+  ){}
 
     loginForm = new FormGroup({
       usuario : new FormControl('', Validators.required),
@@ -17,4 +22,7 @@ export class LoginComponent {
       console.log(form);
     }
 
+    public addUser() {
+      this.router.navigate(['sing-up'])
+    }
 }

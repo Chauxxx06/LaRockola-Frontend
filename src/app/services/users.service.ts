@@ -23,18 +23,18 @@ export class UsersService {
     return this.http.put<GetUser>(link, form);
   }
 
-  public getUserById(id: number): Observable<CreateUser> {
+  public getUserById(id: number): Observable<GetUser> {
     let link = this.url + "search/" + id;
     return this.http.get<GetUser>(link);
   }
 
-  public getAllUsers(): Observable<CreateUser[]> {
+  public getAllUsers(): Observable<GetUser[]> {
     let link = this.url + "list";
-    return this.http.get<CreateUser[]>(link);
+    return this.http.get<GetUser[]>(link);
   }
 
-  public deleteUser(id: String): Observable<void> {
-    let link = this.url + "delete" + id;
+  public deleteUser(id: number): Observable<void> {
+    let link = this.url + "delete/" + id;
     return this.http.delete<void>(link);
   }
   

@@ -30,6 +30,7 @@ export class SingUpComponent {
     this.userService.addUser(form).subscribe(data => {
       console.log(data);
     });
+    this.router.navigate(['home'])
   }
   
   public return() {
