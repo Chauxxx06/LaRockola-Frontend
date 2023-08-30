@@ -1,0 +1,35 @@
+<div class="container" style="margin-top: 40px;">
+        <div class="card" style="margin-bottom: 10px;">
+
+        <div class="class header">
+            <h3>Artistas</h3>
+        </div>
+    
+        <table class="table">
+            <thead class="thead-dark">
+              <tr class="text-center">
+                <th scope="col">ID</th>
+                <th scope="col">Tipo Usuario</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Nickname</th>
+                <th scope="col">Fecha Registro</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users" class="text-center">
+                <th>{{user.idUsuario}}</th>
+                <td>{{user.idTipoUsuario}}</td>
+                <td>{{user.nombreUsuario}}</td>
+                <td>{{user.emailUsuario}}</td>
+                <td>{{user.nickname}}</td>
+                <td>{{user.fechaRegistro}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteUsers(user.idUsuario)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

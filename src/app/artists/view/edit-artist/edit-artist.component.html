@@ -1,1 +1,61 @@
-<p>edit-artist works!</p>
+<div class="container" style="max-width: 40%; margin-top: 10px">
+  <form [formGroup]="formEdit" (ngSubmit)="postForm(formEdit.getRawValue())">
+    <div class="form-group">
+      <label for="FormControlInput1">ID</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="ID Usuario"
+        formControlName="idArtista"
+        readonly
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="FormControlInput2">Nombre Artista</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre"
+        formControlName="nombreArtista"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="FormControlInput3">Genero del Artista</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Numero de Celular"
+        formControlName="generoArtista"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="FormControlInput4">Descripcion del Artista</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="descripcion"
+        formControlName="descripcionArtista"
+      />
+    </div>
+
+    <div class="form-group">
+        <label for="FormControlInput4">Fecha Actualizacion</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Correo"
+          formControlName="fechaRegistro"
+          [ngModel]="getCurrentDate()"
+        />
+      </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-danger" (click)="return()">
+      Regresar
+    </button>
+  </form>
+</div>

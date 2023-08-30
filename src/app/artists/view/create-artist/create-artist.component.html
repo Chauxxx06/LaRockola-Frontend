@@ -1,1 +1,50 @@
-<p>create-artist works!</p>
+<div class="container" style="max-width: 40%; margin-top: 10px;">
+    <form [formGroup]="formNew" (ngSubmit)="postForm(formNew.getRawValue())">
+        <div class="form-group">
+            <label for="FormControlInput2">Id</label>
+            <input type="text" class="form-control" placeholder="Id" formControlName="idArtista">
+            <div *ngIf="formNew.get('idArtista')?.invalid && formNew.get('idArtista')?.dirty" class="alert alert-danger mt-2">
+                el id es obligatorio
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="FormControlInput3">Nombre del Artista</label>
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombreArtista">
+            <div *ngIf="formNew.get('nombreArtista')?.invalid && formNew.get('nombreArtista')?.dirty" class="alert alert-danger mt-2">
+                el nombre es obligatorio
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="FormControlInput4">Genero</label>
+            <input type="text" class="form-control" placeholder="Genero" formControlName="generoArtista">
+            <div *ngIf="formNew.get('generoArtista')?.invalid && formNew.get('generoArtista')?.dirty" class="alert alert-danger mt-2">
+                el genero es obligatorio
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label for="FormControlInput5">Descripcion</label>
+                <input type="text" class="form-control" placeholder="descripcion" formControlName="descripcionArtista">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="FormControlInput4">Fecha Registro</label>
+            <input type="text" class="form-control" placeholder="fecha" formControlName="fechaRegistro" [ngModel]="getCurrentDate()"readonly>
+            <div *ngIf="formNew.get('fechaRegistro')?.invalid && formNew.get('fechaRegistro')?.dirty" class="alert alert-danger mt-2">
+                fecha obligatoria
+            </div>
+        </div>
+
+       
+        <br>
+        <button type="submit" class="btn btn-primary" [disabled]="formNew.get('idArtista')?.invalid || formNew.get('nombreArtista')?.invalid || formNew.get('generoArtista')?.invalid || formNew.get('fechaRegistro')?.invalid">Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="return()">Regresar</button>
+
+
+    </form>
+
+</div>

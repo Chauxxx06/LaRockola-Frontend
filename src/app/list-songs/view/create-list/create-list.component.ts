@@ -11,14 +11,14 @@ import { FormGroup,FormControl, Validators } from '@angular/forms';
   styleUrls: ['./create-list.component.css']
 })
 export class CreateListComponent {
-  constructor(private router:Router, private lista:ListService){}
+  constructor(private router:Router, private listaService:ListService){}
 
-  list:any;
+  //list:any;
 
   formNew = new FormGroup<any>({
-    nombre: new FormControl('', Validators.required),
-    fecha: new FormControl('', Validators.required),
-    descripcion: new FormControl('', Validators.required)
+    nombreLista: new FormControl('', Validators.required),
+    fechaCreoLista: new FormControl('', Validators.required),
+    descripcionLista: new FormControl('', Validators.required)
   })
 
   /*Funcion para dejar la fecha por defecto*/
@@ -31,16 +31,15 @@ export class CreateListComponent {
     return `${year}-${month}-${day}`;
   }
 
-
+/*
   ngOnInit(): void {
     this.formNew.patchValue({
     });
   }
+  */
   /*post para guardar la lista*/
-  postForm(form:ListCancion){
-    console.log('postform');
-    console.log(form);
-    this.lista.postList(form).subscribe(data=>{
+  public postForm(form:ListCancion){
+    this.listaService.postList(form).subscribe(data=>{
       console.log(data)
       let response:ResponseI=data;
       console.log(response);
@@ -52,6 +51,10 @@ export class CreateListComponent {
       }
       */
     })
+  }
+
+  public return() {
+    this.router.navigate(['ListCancion'])
   }
 
 }

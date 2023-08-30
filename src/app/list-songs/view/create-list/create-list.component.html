@@ -2,18 +2,18 @@
   <div class="row mt-5">
     <div class="col-md-6 offset-md-3">
       <h2 class="text-center">Crear nueva lista de canciones</h2>
-      <form (ngSubmit)="postForm(formNew.getRawValue())">
+      <form [formGroup]="formNew" (ngSubmit)="postForm(formNew.getRawValue())">
         <div class="form-group">
           <label for="nombreLista">Nombre de la Lista</label>
-          <input type="text" class="form-control" id="nombreLista" name="nombre_lista" required>
+          <input type="text" class="form-control" placeholder="Nombre Lista" formControlName="nombreLista">
         </div>
         <div class="form-group">
           <label for="descripcionLista">Descripción de la Lista</label>
-          <textarea class="form-control" id="descripcionLista" name="descripcion_lista" rows="3" required></textarea>
+          <input type="text" class="form-control" placeholder="Descripcion lista" formControlName="descripcionLista">
         </div>
         <div class="form-group">
           <label for="fechaCreoLista">Fecha de Creación de la Lista</label>
-          <input type="date" class="form-control" id="fechaCreoLista" name="fecha_creo_lista" value="{{ getCurrentDate() }}" readonly>
+          <input type="date" class="form-control" placeholder="Fecha" formControlName="fechaCreoLista" value="{{ getCurrentDate() }}" >
         </div>
         <br>
         <button type="submit" class="btn btn-success">Crear Lista</button>
