@@ -8,7 +8,7 @@ import { ResponseI } from 'src/app/models/response.interface';
   providedIn: 'root'
 })
 export class ListService {
-  url:string = "http://localhost:8080/";
+  url:string = "http://localhost:9090/";
 
   //constructor() { }
   constructor(private http:HttpClient){ }

@@ -22,13 +22,19 @@ export class CreateListComponent {
   })
 
   /*Funcion para dejar la fecha por defecto*/
-  getCurrentDate(): string {
+  /*getCurrentDate(): string {
 
     const today = new Date();
     const year = today.getFullYear();
     const month = (today.getMonth() + 1).toString().padStart(2, '0');
     const day = today.getDate().toString().padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+*/
+  public getCurrentDate(): string {
+    const now: Date = new Date();
+    const utcNow: Date = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes()));
+    return utcNow.toISOString();
   }
 
 /*
