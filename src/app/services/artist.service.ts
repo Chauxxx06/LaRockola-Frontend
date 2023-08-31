@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Artist } from '../models/artist/Artist.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,12 +9,17 @@ import { Observable } from 'rxjs';
 export class ArtistService {
 
   url: string = 'http://localhost:9090/artista/';
-  
+
 
   constructor(private http: HttpClient) { }
 
   public getAllArtist(): Observable<Artist[]> {
     let link = this.url + "list";
+    try {
+      console.log("ok!");
+    } catch (error) {
+console.error(error);
+    }
     return this.http.get<Artist[]>(link);
   }
 

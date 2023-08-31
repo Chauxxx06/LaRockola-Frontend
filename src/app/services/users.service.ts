@@ -37,5 +37,5 @@ export class UsersService {
     let link = this.url + "delete/" + id;
     return this.http.delete<void>(link);
   }
-  
+
 }

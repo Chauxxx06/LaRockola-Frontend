@@ -1,1 +1,23 @@
-<p>home works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+  <div class="container" [ngClass]="{'flex-container': isResponsive}">
+    <div *ngFor="let category of categories">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{{category.imagenGenero}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{category.tipoGenero}}</h5>
+            <p class="card-text">{{category.descripcionGenero}}</p>
+            <a href="#" class="btn btn-primary">Ver canciones</a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</body>
+</html>
