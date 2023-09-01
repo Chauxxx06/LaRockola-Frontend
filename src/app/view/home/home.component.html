@@ -8,8 +8,8 @@
 <body>
   <div class="container" [ngClass]="{'flex-container': isResponsive}">
     <div *ngFor="let category of categories">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="{{category.imagenGenero}}" alt="Card image cap">
+        <div class="card  mt-4 mb-4 p-4 border" style="width: 18rem;">
+          <img class="card-img-top" src="{{category.imagenGenero}}" alt="Card image cap" width="200" height="200">
           <div class="card-body">
             <h5 class="card-title">{{category.tipoGenero}}</h5>
             <p class="card-text">{{category.descripcionGenero}}</p>

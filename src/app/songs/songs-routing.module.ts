@@ -6,7 +6,7 @@ import { EditSongsComponent } from './view/edit-songs/edit-songs.component';
 
 const routes: Routes = [
   {path:'', component: SelectSongsComponent},
-  {path:'edit/:id', component: EditSongsComponent},
+  {path:'edit', component: EditSongsComponent},
   {path:'create', component: CreateSongsComponent},
 ];
 

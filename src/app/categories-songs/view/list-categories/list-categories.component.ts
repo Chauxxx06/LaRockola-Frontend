@@ -28,17 +28,20 @@ export class ListCategoriesComponent implements OnInit{
     });
   }
   public addCategories() {
-    this.router.navigate(['genero-musical/create']);
+    console.log('ok');
+    this.router.navigate(['category/create']);
   }
 
   public deleteCategories(id: number) {
     this.categoriesSongsService.deleteCategoriesSongs(id).subscribe();
+    alert("Categoria Borrada");
   }
 
   public editCategories(id: number) {
     this.idSend= id;
+    console.log('ok'+ this.idSend);
     this.sendIdComponent.sendIdComponents(this.idSend);
-    this.router.navigate(['genero-musical/edit'])
+    this.router.navigate(['category/edit'])
   }
 
 }
