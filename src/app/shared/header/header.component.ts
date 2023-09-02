@@ -21,4 +21,16 @@ constructor(private router:Router){ }
   public redirectAdminUser() {
     this.router.navigate(['admin-users']);
   }
+
+  public redirectListSong() {
+    this.router.navigate(['list-songs']);
+  }
+
+  public redirectSong() {
+    this.router.navigate(['songs']);
+  }
+
+  public reCategories() {
+    this.router.navigate(['category']);
+  }
 }
