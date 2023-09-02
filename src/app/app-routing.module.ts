@@ -10,7 +10,7 @@ import { AdminUsersComponent } from './view/admin-users/admin-users.component';
 const routes: Routes = [
   {path: 'home', component:HomeComponent},
   {path: 'login', component:LoginComponent},
-  {path: '', redirectTo: 'home', pathMatch:'full'},
+  {path: '', redirectTo: 'login', pathMatch:'full'},
   {path: 'edit-user', component:EditUserComponent},
   {path: 'admin-users', component:AdminUsersComponent},
   {path: 'sing-up', component:SingUpComponent},

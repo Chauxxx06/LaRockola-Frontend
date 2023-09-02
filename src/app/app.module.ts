@@ -6,6 +6,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditUserComponent } from './view/edit-user/edit-user.component';
 import { AdminUsersComponent } from './view/admin-users/admin-users.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AdminUsersComponent } from './view/admin-users/admin-users.component';
     routingComponents,
     EditUserComponent,
     AdminUsersComponent,
+    HeaderComponent,
   ],
 
   imports: [
