@@ -1,6 +1,6 @@
 export interface ListCancion{
-  idLista:number;
+  idLista:string;
   nombreLista:string;
-  //fechaCreoLista:Date;
+  fechaCreoLista:Date;
   descripcionLista:string;
 }
