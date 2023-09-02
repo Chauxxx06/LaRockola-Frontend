@@ -6,7 +6,7 @@ import { CreateCategoriesComponent } from './view/create-categories/create-categ
 
 const routes: Routes = [
   {path:'', component: ListCategoriesComponent},
-  {path:'edit/:id', component: EditCategoriesComponent},
+  {path:'edit', component: EditCategoriesComponent},
   {path:'create', component: CreateCategoriesComponent},
 ];
 
