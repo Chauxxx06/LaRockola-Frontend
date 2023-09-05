@@ -1,0 +1,41 @@
+<div>
+    <nav >
+        <section class="menu">
+            <div class="image">
+                <img class="guitar" src="../../../assets/guitarra.png" alt="guitarra">
+            </div>
+            <div class="options">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" (click)="redirectHome()">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" (click)="redirectListSong()">Lista de Canciones</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" (click)="redirectSong()">Canciones</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" (click)="redirectArtist()">Artista</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" (click)="redirectAdminUser()">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" (click)="reCategories()">Categorias
+                      </a>
+                    </li>
+                  </ul>
+            </div>
+        </section>
+        <section class="navbar-text">
+            <div class="info-user">
+                <span class="user-name">Administrator</span>
+                <span class="user-email">correo@example.com</span>
+            </div>
+            <div>
+                <img class="image-user"src="../../../assets/usuario.png" alt="Usuario">
+            </div>
+        </section>
+    </nav>
+</div>

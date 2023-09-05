@@ -1,1 +1,50 @@
-<p>edit-list works!</p>
+<div class="container" style="max-width: 40%; margin-top: 10px">
+  <form [formGroup]="formEdit" (ngSubmit)="postForm(formEdit.getRawValue())">
+    <div class="form-group">
+      <label for="FormControlInput1">ID</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="ID Usuario"
+        formControlName="idLista"
+        readonly
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="FormControlInput2">Nombre Lista</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre"
+        formControlName="nombreLista"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="FormControlInput3">Descripcion Lista</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Descripcion"
+        formControlName="descripcionLista"
+      />
+    </div>
+    <div class="form-group">
+        <label for="FormControlInput4">Fecha Actualizacion</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Fecha"
+          formControlName="fechaCreoLista"
+          [ngModel]="getCurrentDate()"
+        />
+      </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-danger" (click)="return()">
+      Regresar
+    </button>
+  </form>
+</div>
