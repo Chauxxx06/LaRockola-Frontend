@@ -1,1 +1,35 @@
-<p>create-songs works!</p>
+<div class="container" style="max-width: 40%; margin-top: 10px;">
+  <form [formGroup]="formNew" (ngSubmit)="postForm(formNew.getRawValue())">
+
+      <div class="form-group">
+          <label for="FormControlInput1">Nombre de la categoria</label>
+          <input type="text" class="form-control" placeholder="Nombre de la Cancion" formControlName="nombreCancion">
+          <div *ngIf="formNew.get('nombreCancion')?.invalid && formNew.get('nombreCancion')?.dirty" class="alert alert-danger mt-2">
+              el Nombre de la cancion es obligatorio
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="FormControlInput3">Link Imagen de la Cancion</label>
+        <input type="text" class="form-control" placeholder="Link Imagen de la Cancion" formControlName="imagenCancion">
+        <div *ngIf="formNew.get('imagenCancion')?.invalid && formNew.get('imagenCancion')?.dirty" class="alert alert-danger mt-2">
+            El link para la imagen es obligatoria
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="FormControlInput4">Categoria</label>
+        <select class="form-control"  formControlName="idGenero">
+          <option value="" disabled selected>Selecciona una Categoria</option>
+        </select>
+      </div>
+
+
+      <br>
+      <button type="submit" class="btn btn-primary" [disabled]="formNew.get('nombreCancion')?.invalid || formNew.get('imagenCancion')?.invalid">Guardar</button>
+      <button type="button" class="btn btn-danger" (click)="return()">Regresar</button>
+
+
+  </form>
+
+</div>
