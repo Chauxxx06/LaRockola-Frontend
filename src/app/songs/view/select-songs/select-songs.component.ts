@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SongsI } from 'src/app/models/songs/songs.interface';
+import { AuthService } from 'src/app/services/auth.service';
 import { SongsService } from 'src/app/services/songs.service';
 import { IdEntitiesService } from 'src/app/services/utils/id-entities.service';
 
@@ -13,18 +14,27 @@ export class SelectSongsComponent {
 
   songs : SongsI[] = [];
   idSend: any;
+  nickname:string = '';
+  authToken: string = '';
+  idTipoUsuario: number = 0;
 
   constructor(
     private songsService: SongsService,
     private router:Router,
     private sendIdComponent: IdEntitiesService,
+    private authService: AuthService
   ){}
 
   ngOnInit(): void {
+    this.nickname = this.authService.getNickname();
+    this.authToken = this.authService.getAuthToken();
+    this.idTipoUsuario = this.authService.getIdTipoUsuario();
+    if(this.nickname !== '' && this.authToken !== '' && this.idTipoUsuario === 1) {
     this.songsService.getAllSongs().subscribe(data => {
       console.log(data);
       this.songs = data
     });
+  }
   }
   public addSongs() {
     console.log('ok');

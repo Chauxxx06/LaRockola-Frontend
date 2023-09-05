@@ -1,14 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-constructor(private router:Router){ }
+nickname:string = '';
+emailUser: string = '';
+idTipoUsuario: number = 0;
+isAdmin:boolean = false;
+
+constructor(
+  private router:Router,
+  private authService: AuthService
+  ){ 
+    this.nickname = this.authService.getNickname();
+    this.emailUser = this.authService.getEmailUser();
+    this.idTipoUsuario = this.authService.getIdTipoUsuario();
+  }
+
+  ngOnInit(): void {
+    if(this.idTipoUsuario === 1) {
+      this.isAdmin = true;
+    }
+  }
 
   public redirectHome() {
     this.router.navigate(['home']);
@@ -32,5 +51,10 @@ constructor(private router:Router){ }
 
   public reCategories() {
     this.router.navigate(['category']);
+  }
+
+  public logout() {
+    this.authService.logout();
+    this.router.navigate(['login'])
   }
 }

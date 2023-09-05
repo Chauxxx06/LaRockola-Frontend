@@ -1,6 +1,8 @@
+
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,20 +11,37 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+  loginForm = new FormGroup({
+    nickname : new FormControl('', Validators.required),
+    password : new FormControl('', Validators.required)
+  })
+  loginFail: boolean = false;
+  
   constructor(
     private router:Router,
+    private authService:AuthService
   ){}
 
-    loginForm = new FormGroup({
-      usuario : new FormControl('', Validators.required),
-      password : new FormControl('', Validators.required)
-    })
+  
+  onLogin(form:any){
+    this.authService.loginUser(form).subscribe(
+      (data) => {
+        this.authService.saveLogin(data.idUsuario, data.idTipoUsuario, data.nickname, data.token);
+        console.log("Credenciales validas");
+        this.loginFail = false;
+        this.router.navigate(['home'])
+      },
+      (error) => {
+        if(error.status === 401) {
+          console.error("Credenciales no validas")
+          this.loginFail =true
+        }
+      }
+    );
 
-    onLogin(form:any){
-      console.log(form);
-    }
+  }
 
-    public addUser() {
-      this.router.navigate(['sing-up'])
-    }
+  public addUser() {
+    this.router.navigate(['sing-up'])
+  }
 }
