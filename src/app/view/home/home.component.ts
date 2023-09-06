@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesSongsI } from 'src/app/models/categories-songs/Categories-songs.interface';
+import { ValidUser } from 'src/app/models/users/ValidUser.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { HomeService } from 'src/app/services/home.service';
 import { IdEntitiesService } from 'src/app/services/utils/id-entities.service';
@@ -14,10 +15,13 @@ export class HomeComponent implements OnInit {
 
   isResponsive = true;
   categories: CategoriesSongsI[] = [];
-  idTipoUsuario: number = 0;
-  nickname:string = '';
+  idUsuario: number = 0;
   authToken: string = '';
-  emailUser: string = '';
+  
+  validUser: ValidUser = {
+    idUsuario: 0,
+    token: ''
+  }
 
   constructor(
     private homeService: HomeService,
@@ -26,20 +30,21 @@ export class HomeComponent implements OnInit {
     private authService: AuthService
   ){}
 
-  ngOnInit(): void {
-    this.idTipoUsuario = this.authService.getIdTipoUsuario();
-    this.nickname = this.authService.getNickname();
-    this.emailUser = this.authService.getEmailUser();
+  ngOnInit() {
+
+    this.idUsuario = this.authService.getUserId();
     this.authToken = this.authService.getAuthToken();
-    console.log(this.nickname);
-    if(this.nickname !== '' && this.authToken !== '' ) {
-      this.homeService.getAllCategoriesSongs().subscribe(data => {
-        console.log(data);
-        this.categories = data
-      });
-    } else {
-      this.router.navigate(['login'])
-    }   
+    this.authService.validUser(this.idUsuario).subscribe( (data) => {
+      this.validUser = data;
+      if(this.validUser.idUsuario === this.idUsuario && this.validUser.token === this.authToken && this.authToken !== '') {
+        this.homeService.getAllCategoriesSongs().subscribe(data => {
+          console.log(data);
+          this.categories = data
+        });
+      } else {
+        this.router.navigate(['login'])
+      }
+    });
   }
 
   

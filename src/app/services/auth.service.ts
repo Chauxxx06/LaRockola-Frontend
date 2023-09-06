@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ReponseUser } from '../models/users/ResponseUser.interface';
 import { LoginPlatform } from '../models/users/Login.interface';
 import jwtDecode from 'jwt-decode';
+import { ValidUser } from '../models/users/ValidUser.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class AuthService {
   public loginUser(login: LoginPlatform): Observable<ReponseUser> {
     let link = this.url + "login";
     return this.http.post<ReponseUser>(link, login);
+  }
+
+  public validUser(id: number) {
+    let link = this.url + "valid/" + id;
+    return this.http.get<ValidUser>(link);
   }
 
   public saveLogin(userId: number, 
