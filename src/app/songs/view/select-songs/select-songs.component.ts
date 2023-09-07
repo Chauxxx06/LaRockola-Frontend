@@ -26,14 +26,13 @@ export class SelectSongsComponent {
   ){}
 
   ngOnInit(): void {
-    this.nickname = this.authService.getNickname();
-    this.authToken = this.authService.getAuthToken();
-    this.idTipoUsuario = this.authService.getIdTipoUsuario();
-    if(this.nickname !== '' && this.authToken !== '' && this.idTipoUsuario === 1) {
+    if(this.authService.getIsAuthenticated()) {
     this.songsService.getAllSongs().subscribe(data => {
       console.log(data);
       this.songs = data
     });
+  } else {
+    this.router.navigate(['login'])
   }
   }
   public addSongs() {

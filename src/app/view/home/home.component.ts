@@ -31,12 +31,16 @@ export class HomeComponent implements OnInit {
   ){}
 
   ngOnInit() {
-
     this.idUsuario = this.authService.getUserId();
     this.authToken = this.authService.getAuthToken();
+    if(this.idUsuario === 0 || this.authToken === '') {
+      this.router.navigate(['login'])
+    }
+
     this.authService.validUser(this.idUsuario).subscribe( (data) => {
       this.validUser = data;
       if(this.validUser.idUsuario === this.idUsuario && this.validUser.token === this.authToken && this.authToken !== '') {
+        this.authService.setIsAuthenticated(true);
         this.homeService.getAllCategoriesSongs().subscribe(data => {
           console.log(data);
           this.categories = data

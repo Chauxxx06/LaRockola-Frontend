@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Artist } from 'src/app/models/artist/Artist.interface';
 import { ArtistService } from 'src/app/services/artist.service';
@@ -23,12 +23,11 @@ export class ListArtistComponent implements OnInit {
     private sendIdComponent: IdEntitiesService,
     private authService: AuthService
   ) {}
+  
 
   ngOnInit(): void {
-    this.nickname = this.authService.getNickname();
-    this.authToken = this.authService.getAuthToken();
-    this.idTipoUsuario = this.authService.getIdTipoUsuario();
-    if(this.nickname !== '' && this.authToken !== '' && this.idTipoUsuario === 1) {
+    
+    if(this.authService.getIsAuthenticated()) {
       this.artistService.getAllArtist().subscribe(data => {
       console.log(data);
       this.artists = data
@@ -38,6 +37,7 @@ export class ListArtistComponent implements OnInit {
       this.router.navigate(['login'])
     }   
   }
+
 
   public addArtist() {
     this.router.navigate(['artist/create']);
@@ -53,5 +53,6 @@ export class ListArtistComponent implements OnInit {
     this.router.navigate(['artist/edit'])
   }
 
+  
 
 }

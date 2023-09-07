@@ -55,6 +55,7 @@ constructor(
 
   public logout() {
     this.authService.logout();
-    this.router.navigate(['login'])
+    this.authService.setIsAuthenticated(false);
+    this.router.navigate(['login']);
   }
 }

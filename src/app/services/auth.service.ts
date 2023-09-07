@@ -17,6 +17,7 @@ export class AuthService {
   private nickname:string = '';
   private authToken: string = '';
   private emailUser: string = '';
+  private isAuthenticated: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -68,5 +69,13 @@ export class AuthService {
 
   getAuthToken() {
     return this.authToken;
+  }
+
+  setIsAuthenticated(is:boolean) {
+    this.isAuthenticated = is;
+  }
+
+  getIsAuthenticated() {
+    return this.isAuthenticated;
   }
 }

@@ -24,6 +24,7 @@ export class LoginComponent {
 
   
   onLogin(form:any){
+    this.authService.setIsAuthenticated(false);
     this.authService.loginUser(form).subscribe(
       (data) => {
         this.authService.saveLogin(data.idUsuario, data.idTipoUsuario, data.nickname, data.token);
