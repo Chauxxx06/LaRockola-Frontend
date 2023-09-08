@@ -11,7 +11,7 @@ import { SongsforcategoryComponent } from './songsforcategory/songsforcategory.c
 const routes: Routes = [
   {path: 'home', component:HomeComponent},
   {path: 'login', component:LoginComponent},
-  {path: '', redirectTo: '', pathMatch:'full'},
+  {path: '', redirectTo: 'home', pathMatch:'full'},
   {path: 'edit-user', component:EditUserComponent},
   {path: 'admin-users', component:AdminUsersComponent},
   {path: 'sing-up', component:SingUpComponent},

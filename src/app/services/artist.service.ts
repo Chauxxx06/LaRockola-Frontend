@@ -18,7 +18,7 @@ export class ArtistService {
     try {
       console.log("ok!");
     } catch (error) {
-console.error(error);
+      console.error(error);
     }
     return this.http.get<Artist[]>(link);
   }

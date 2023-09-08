@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriesSongsI } from 'src/app/models/categories-songs/Categories-songs.interface';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategoriesSongsService } from 'src/app/services/categories-songs.service';
 import { IdEntitiesService } from 'src/app/services/utils/id-entities.service';
 
@@ -10,23 +11,31 @@ import { IdEntitiesService } from 'src/app/services/utils/id-entities.service';
   templateUrl: './list-categories.component.html',
   styleUrls: ['./list-categories.component.css']
 })
-export class ListCategoriesComponent implements OnInit{
+export class ListCategoriesComponent implements OnInit {
 
   categories : CategoriesSongsI[] = [];
   idSend: any;
+  nickname:string = '';
+  authToken: string = '';
+  idTipoUsuario: number = 0;
 
   constructor(
     private categoriesSongsService: CategoriesSongsService,
     private router:Router,
     private sendIdComponent: IdEntitiesService,
+    private authService: AuthService
   ){}
 
   ngOnInit(): void {
-    this.categoriesSongsService.getAllCategoriesSongs().subscribe(data => {
-      console.log(data);
-      this.categories = data
-    });
+   
+    if(this.authService.getIsAuthenticated()) {  
+      this.categoriesSongsService.getAllCategoriesSongs().subscribe(data => {
+        console.log(data);
+        this.categories = data
+      });
+    }
   }
+
   public addCategories() {
     console.log('ok');
     this.router.navigate(['category/create']);

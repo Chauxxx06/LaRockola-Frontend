@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Artist } from 'src/app/models/artist/Artist.interface';
 import { ArtistService } from 'src/app/services/artist.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { IdEntitiesService } from 'src/app/services/utils/id-entities.service';
 
 @Component({
@@ -12,19 +13,31 @@ import { IdEntitiesService } from 'src/app/services/utils/id-entities.service';
 export class ListArtistComponent implements OnInit {
   artists : Artist[] = [];
   idSend: any;
+  nickname:string = '';
+  authToken: string = '';
+  idTipoUsuario: number = 0;
 
   constructor(
     private artistService: ArtistService,
     private router:Router,
     private sendIdComponent: IdEntitiesService,
+    private authService: AuthService
   ) {}
+  
 
   ngOnInit(): void {
-    this.artistService.getAllArtist().subscribe(data => {
+    
+    if(this.authService.getIsAuthenticated()) {
+      this.artistService.getAllArtist().subscribe(data => {
       console.log(data);
       this.artists = data
-    });
+      });
+      
+    } else {
+      this.router.navigate(['login'])
+    }   
   }
+
 
   public addArtist() {
     this.router.navigate(['artist/create']);
@@ -40,5 +53,6 @@ export class ListArtistComponent implements OnInit {
     this.router.navigate(['artist/edit'])
   }
 
+  
 
 }
