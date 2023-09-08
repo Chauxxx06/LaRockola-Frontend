@@ -15,7 +15,7 @@
           <div class="card-body">
             <h5 class="card-title">{{category.tipoGenero}}</h5>
             <p class="card-text">{{category.descripcionGenero}}</p>
-            <a href="#" class="btn btn-primary">Ver canciones</a>
+            <a class="btn btn-primary" (click)="viewSongs(category.idGenero)">Ver canciones</a>
           </div>
         </div>
     </div>

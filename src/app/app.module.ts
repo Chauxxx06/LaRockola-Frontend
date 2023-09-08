@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { EditUserComponent } from './view/edit-user/edit-user.component';
 import { AdminUsersComponent } from './view/admin-users/admin-users.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { SongsforcategoryComponent } from './songsforcategory/songsforcategory.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HeaderComponent } from './shared/header/header.component';
     EditUserComponent,
     AdminUsersComponent,
     HeaderComponent,
+    SongsforcategoryComponent,
   ],
 
   imports: [

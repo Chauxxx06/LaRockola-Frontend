@@ -1,0 +1,30 @@
+<div class="container" style="margin-top: 40px;">
+
+  <div class="card" style="margin-bottom: 10px;">
+
+      <div class="class header">
+          <h3>Lista de Canciones</h3>
+      </div>
+
+      <table class="table">
+          <thead class="thead-dark">
+            <tr class="text-center">
+              <th scope="col">Nombre</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Fecha Actualizacion</th>
+              <th scope="col">Url</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let song of songs" class="text-center">
+              <td>{{song.nombreCancion}}</td>
+              <td>{{song.imagenCancion}}</td>
+              <td>{{song.fechaCreoGenero}}</td>
+              <td>{{song.urlCancion}}</td>
+            </tr>
+            <button type="button" class="btn btn-primary" style="float: left" (click)="return()">Regresar</button>
+          </tbody>
+        </table>
+  </div>
+</div>

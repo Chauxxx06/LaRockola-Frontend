@@ -17,12 +17,42 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group mt-2">
         <label for="FormControlInput4">Categoria</label>
-        <select class="form-control"  formControlName="idGenero">
-          <option value="" disabled selected>Selecciona una Categoria</option>
+        <select  id="idGenero" formControlName="idGenero">
+          <option value="" disabled selected>Selecciona un elemento</option>
+          <option *ngFor="let category of categories" [value]="category.idGenero">{{ category.tipoGenero }}</option>
         </select>
       </div>
+
+      <div class="form-group mt-2">
+        <label for="FormControlInput4">Artista</label>
+        <select  id="idArtista" >
+          <option value="" disabled selected>Selecciona un elemento</option>
+          <option *ngFor="let artist of artists" [value]="artist.idArtista">{{ artist.nombreArtista }}</option>
+        </select>
+      </div>
+
+      <div class="form-group mt-2">
+        <label for="FormControlInput5">Descripcion de la Cancion</label>
+        <input type="text" class="form-control" placeholder="Descripcion de la Cancion" formControlName="descripcionCancion">
+        <div *ngIf="formNew.get('descripcionCancion')?.invalid && formNew.get('descripcionCancion')?.dirty" class="alert alert-danger mt-2">
+           La descripcion es obligatoria
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="FormControlInput6">Url de la Cancion</label>
+        <input type="text" class="form-control" placeholder="Link de la Cancion" formControlName="urlCancion">
+        <div *ngIf="formNew.get('urlCancion')?.invalid && formNew.get('urlCancion')?.dirty" class="alert alert-danger mt-2">
+            El link de la cancion es obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="FormControlInput7">Fecha Registro</label>
+        <input type="text" class="form-control" placeholder="fecha" formControlName="fechaCreoGenero" [ngModel]="getCurrentDate()"readonly>
+    </div>
 
 
       <br>

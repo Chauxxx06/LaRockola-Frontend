@@ -4,6 +4,10 @@ import { CategoriesSongsI } from 'src/app/models/categories-songs/Categories-son
 import { HomeService } from 'src/app/services/home.service';
 import { IdEntitiesService } from 'src/app/services/utils/id-entities.service';
 
+import { SongsI } from 'src/app/models/songs/songs.interface';
+import { SongsService } from 'src/app/services/songs.service';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   isResponsive = true;
   categories: CategoriesSongsI[] = [];
+  idSend: any;
 
   constructor(
     private homeService: HomeService,
@@ -26,5 +31,13 @@ export class HomeComponent implements OnInit {
       this.categories = data
     });
   }
+
+  public viewSongs(id: number) {
+    this.idSend= id;
+    this.sendIdComponent.sendIdComponents(this.idSend);
+    console.log(this.idSend);
+    this.router.navigate(['songsforcategory'])
+  }
+
 }
 
