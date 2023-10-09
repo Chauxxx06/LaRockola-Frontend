@@ -28,6 +28,7 @@ export class ListService {
     }
     return this.http.get<ListCancion[]>(link);
   }
+  
 
   public getListtById(id:String) {
     let link = this.url + "lista/search/" + id;
@@ -44,7 +45,7 @@ export class ListService {
     return this.http.delete<void>(link);
   }
 
-  
+
 
 
 }

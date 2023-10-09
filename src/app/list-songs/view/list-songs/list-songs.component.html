@@ -1,9 +1,33 @@
-<div class="container" style="margin-top: 40px;">
-  <button type="button" class="btn btn-primary" style="float: initial; margin-bottom: 10px;" (click)="postList()">Agregar Lista</button>
+<html>
+<body>
+<div class="container">
+ <!-- <button type="button" class="btn btn-primary" style="float: initial; margin-bottom: 10px;" (click)="postList()">Agregar Lista</button> -->
+  <button type="button" class="btn btn-primary" style="float: initial; margin-bottom: 20px; margin-top: 20px;" (click)="mostrarFormulario_oculto()">Agregar Lista</button>
+  <!--mUESTRA INPUTS OCULTOS PARA CRAR LA NUEA LISTA-->
+<div *ngIf="mostrarFormulario">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+      <input [(ngModel)]="nombreLista" placeholder="Nombre de la Lista"/>
+    </div>
+    <div class="col-md-4">
+      <input [(ngModel)]="descripcionLista" placeholder="Descripción"/>
+    </div>
+    <div class="col-md-4">
+      <input [(ngModel)]="fechaCreoLista" placeholder="Fecha de Creación"/>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-success" (click)="postForm()">Guardar</button>
+    </div>
+  </div>
+  </div>
+  </div>
   <div class="card" style="margin-bottom: 10px;">
-
       <div class="class header">
-          <h3>Listas de cacniones</h3>
+          <h3>{{ cant_lista }} Listas de canciones</h3>
+          <div class="mensaje-eliminado" *ngIf="mensajeEliminado">{{mensajeEliminado}}</div>
       </div>
 
       <table class="table">
@@ -16,17 +40,41 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let listacancio of listacancion" class="text-center">
-              <th>{{listacancio.nombreLista}}</th>
-              <td>{{listacancio.descripcionLista}}</td>
-              <td>{{listacancio.fechaCreoLista}}</td>
-              <td>
-                  <button type="button" class="btn btn-primary" style="float: left" (click)="editList(listacancio.idLista)">Editar</button>
-                  <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteList(listacancio.idLista)">Eliminar</button>
+
+<!--Cuando cambia el estado al dar clic en el boton editar se muestran estos td con los datos de ese id pra editarlos-->
+            <tr *ngFor="let listacancio of listacancion" class="text-center" >
+
+              <td *ngIf="modoEdicion && listacancio.idLista === listaEditandoId">
+                <input [(ngModel)]="listacancio.nombreLista"/>
               </td>
+              <td *ngIf="modoEdicion && listacancio.idLista === listaEditandoId" >
+                <input [(ngModel)]="listacancio.descripcionLista" />
+              </td>
+              <td *ngIf="modoEdicion && listacancio.idLista === listaEditandoId" >
+                <input [(ngModel)]="listacancio.fechaCreoLista"/>
+              </td>
+              <td *ngIf="modoEdicion && listacancio.idLista === listaEditandoId" >
+                <button type="button" class="btn btn-success" style="float: left" (click)="guardarEdicion(listacancio)">Guardar</button>
+                <button type="button" class="btn btn-secondary" style="margin-left: 10px;" (click)="cancelarEdicion()">Cancelar</button>
+              </td>
+<!--Cuando cambia el estado al dar clic en el boton editar se muestran estos td con los datos de ese id pra editarlos-->
+
+              <td *ngIf="!modoEdicion || listacancio.idLista !== listaEditandoId">{{listacancio.nombreLista}}</td>
+              <td *ngIf="!modoEdicion || listacancio.idLista !== listaEditandoId">{{listacancio.descripcionLista}}</td>
+              <td *ngIf="!modoEdicion || listacancio.idLista !== listaEditandoId">{{listacancio.fechaCreoLista }}</td>
+              <td>
+                  <button type="button" class="btn btn-primary" style="float: left" (click)="editList(listacancio.idLista)" *ngIf="!modoEdicion || listacancio.idLista !== listaEditandoId">Editar</button>
+                  <button type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="deleteList(listacancio.idLista)" *ngIf="!modoEdicion || listacancio.idLista !== listaEditandoId">Eliminar</button>
+                </td>
+
             </tr>
+
           </tbody>
         </table>
   </div>
 </div>
+
+</body>
+</html>
+
 

@@ -1,0 +1,32 @@
+html,body{
+  background: #434fec;
+  background-image: linear-gradient(to right, #8b7db6 0%, #6b46f3 0%, #393289 0%, #4727d5 33%, #8285b5 66%, #5acbf0 100%);
+
+}
+
+.edit-input {
+  width: 100%; /* Puedes ajustar el ancho según tus preferencias */
+  box-sizing: border-box; /* Asegura que el ancho incluye el relleno y el borde */
+}
+
+.mensaje-eliminado {
+
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 10px;
+  animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+
+
+
+

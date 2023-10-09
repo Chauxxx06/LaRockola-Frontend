@@ -3,22 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body>
-  <div class="container" [ngClass]="{'flex-container': isResponsive}">
-    <div *ngFor="let category of categories">
-        <div class="card  mt-4 mb-4 p-4 border" style="width: 18rem;">
-          <img class="card-img-top" src="{{category.imagenGenero}}" alt="Card image cap" width="200" height="200">
-          <div class="card-body">
-            <h5 class="card-title">{{category.tipoGenero}}</h5>
-            <p class="card-text">{{category.descripcionGenero}}</p>
-            <a class="btn btn-primary" (click)="viewSongs(category.idGenero)">Ver canciones</a>
-          </div>
-        </div>
+  <section class="slider">
+    <div class="container" [ngClass]="{'flex-container': isResponsive}">
+      <div *ngFor="let category of categories">
+          <!-- <div class="card  mt-4 mb-4 p-4 border" style="width: 14rem;"> -->
+            <!--<img class="card-img-top" src="{{category.imagenGenero}}" alt="Card image cap" width="100" height="100">-->
+            <div class="card-body">
+             <!-- <h5 class="card-title">{{category.tipoGenero}}</h5> -->
+             <!-- <p class="card-text">{{category.descripcionGenero}}</p> -->
+              <a class="btn btn-secondary" (click)="viewSongs(category.idGenero)">{{category.descripcionGenero}}</a>
+            </div>
+          <!-- </div> -->
+      </div>
+
+
+
+    </div>
+</section>
+
+<div class="tarjeta">
+  <div class="titulo">Una tarjeta básicaxxx</div>
+    <div class="cuerpo">
+      <img src="./img/play.png" alt="muestraxx">
+      <!-- <img src="" alt="" srcset="img/fond.jfif"> -->
+    </div>
+    <div class="pie">
+      <a href="#">Más información</a>
     </div>
   </div>
+
+
+
+<section class="parallax">
+  <h2 class="sect1">La musica llena tus sentidos</h2>
+</section>
+
+<section class="slider_dos" >
+ <!-- Reproductor de música -->
+ <div class="audio-player">
+  <audio id="audio" controls>
+      <source id="audio-source" src="" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <ul class="playlist" id="playlist">
+      <li class="playlist-item"><a href="#" onclick="playSong('cancion1.mp3')">Canción 1</a></li>
+      <li class="playlist-item"><a href="#" onclick="playSong('cancion2.mp3')">Canción 2</a></li>
+      <!-- Agrega más canciones según necesites -->
+  </ul>
+</div>
+</section>
+
+<script>
+  function playSong(src) {
+      var audio = document.getElementById('audio');
+      var source = document.getElementById('audio-source');
+      source.src = src;
+      audio.load();
+      audio.play();
+  }
+</script>
 
 </body>
 </html>

@@ -23,19 +23,19 @@ export class ListArtistComponent implements OnInit {
     private sendIdComponent: IdEntitiesService,
     private authService: AuthService
   ) {}
-  
+
 
   ngOnInit(): void {
-    
+
     if(this.authService.getIsAuthenticated()) {
       this.artistService.getAllArtist().subscribe(data => {
       console.log(data);
       this.artists = data
       });
-      
+
     } else {
       this.router.navigate(['login'])
-    }   
+    }
   }
 
 
@@ -53,6 +53,6 @@ export class ListArtistComponent implements OnInit {
     this.router.navigate(['artist/edit'])
   }
 
-  
+
 
 }
